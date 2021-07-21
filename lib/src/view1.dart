@@ -13,7 +13,6 @@ class _PayMethod extends State<MyPay> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      
       home: Scaffold(
         appBar: AppBar(
           actions: [],
@@ -23,7 +22,6 @@ class _PayMethod extends State<MyPay> {
         
         body: Column(
           children: [
-            // Padding(padding: EdgeInsets.symmetric(vertical: 15)),
             Text("\nSALDO:", textAlign: TextAlign.right, style: TextStyle(fontSize: 20),),
             Container(
               height: 200,
@@ -39,6 +37,7 @@ class _PayMethod extends State<MyPay> {
                 margin: EdgeInsets.all(10),
               )
             ),
+            
             Padding(padding: EdgeInsets.symmetric(vertical: 170)),
             RaisedButton(
               child: Column(mainAxisAlignment: MainAxisAlignment.center,children: [Icon(Icons.camera),Text("scanner")],), 
