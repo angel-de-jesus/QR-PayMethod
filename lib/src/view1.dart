@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class MyPay extends StatefulWidget {
   @override
@@ -7,15 +8,19 @@ class MyPay extends StatefulWidget {
 
 class _PayMethod extends State<MyPay> {
   int saldo = 1000;
+  String texto ="";
+
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
+      
       home: Scaffold(
         appBar: AppBar(
           actions: [],
           title: Text("Pay Method QR"),
         ),
 
+        
         body: Column(
           children: [
             // Padding(padding: EdgeInsets.symmetric(vertical: 15)),
@@ -33,6 +38,16 @@ class _PayMethod extends State<MyPay> {
                 elevation: 5,
                 margin: EdgeInsets.all(10),
               )
+            ),
+            Padding(padding: EdgeInsets.symmetric(vertical: 170)),
+            RaisedButton(
+              child: Column(mainAxisAlignment: MainAxisAlignment.center,children: [Icon(Icons.camera),Text("scanner")],), 
+              onPressed: () async {
+                String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#A03131','Cancelar',false,ScanMode.QR,);
+                setState(() {
+                  texto=barcodeScanRes;
+                });
+              },
             ),
           ],
         ),
