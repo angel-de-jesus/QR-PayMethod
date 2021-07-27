@@ -22,6 +22,7 @@ class _PayMethod extends State<MyPay> {
     return MaterialApp(
       theme: ThemeData.dark(),
       home: Scaffold(
+        
         appBar: AppBar(
           actions: [],
           title: Text("Pay Method QR"),
@@ -63,6 +64,12 @@ class _PayMethod extends State<MyPay> {
               
             Padding(padding: EdgeInsets.symmetric(vertical: 50)),
             RaisedButton(
+              elevation: 50,
+              padding: EdgeInsets.all(8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                side: BorderSide(color: Colors.white),
+              ),
               child: Column(mainAxisAlignment: MainAxisAlignment.center,children: [Icon(Icons.camera),Text("scanner")],), 
               onPressed: () async {
                 String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#A03131','Cancelar',false,ScanMode.QR,);
@@ -71,8 +78,7 @@ class _PayMethod extends State<MyPay> {
                 texto=texArray[0];
                 valor = int.parse(texto); 
 
-                if(saldo < valor){
-                  
+                if(saldo < valor){ 
                 }else{
                   setState(() { 
                     saldo = saldo-valor;
@@ -80,7 +86,6 @@ class _PayMethod extends State<MyPay> {
                     urlImagenes.add(texArray[1]);
                     con = con+1;
                   });
-                  print("++++++++++++++++++++++++++++++++++++++++++++++++++++ ${urlImagenes[con]}");
                 }              
               },
             ),
